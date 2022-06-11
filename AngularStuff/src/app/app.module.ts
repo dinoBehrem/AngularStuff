@@ -11,6 +11,8 @@ import { AtributeDirectiveComponent } from './features/directives/atribute-direc
 import { SimpleDirectiveDirective } from './features/directives/atribute-directive/simple-directive.directive';
 import { EventDirectiveDirective } from './features/directives/atribute-directive/event-directive.directive';
 import { ValuesDirectiveDirective } from './features/directives/atribute-directive/values-directive.directive';
+import { PipeComponent } from './features/pipes/pipe/pipe.component';
+import { CustomPipePipe } from './features/pipes/custom-pipe.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,9 @@ import { ValuesDirectiveDirective } from './features/directives/atribute-directi
     AtributeDirectiveComponent,
     SimpleDirectiveDirective,
     EventDirectiveDirective,
-    ValuesDirectiveDirective
+    ValuesDirectiveDirective,
+    PipeComponent,
+    CustomPipePipe
   ],
   imports: [
     BrowserModule,

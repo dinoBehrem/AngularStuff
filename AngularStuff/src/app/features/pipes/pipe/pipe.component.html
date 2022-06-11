@@ -1,0 +1,12 @@
+<p>pipe works!</p>
+<div *ngFor="let user of users">
+    <!-- Passing arguments to pipe with "pipe_name:arg_1:arg_2" -->
+    <span> {{user.name}}'s favourite food is {{(user.userId | customPipe:'food')}}</span>
+    <br>
+
+    <!-- Chaining multiple pipes with "|"  -->
+    <span> {{user.name}}'s birthday is on {{user.birthdate | date:'d/M/y' | uppercase}}</span>
+    <br>
+
+    <!-- If pipe returs Observables, we need to use async pipe  -->
+</div>
