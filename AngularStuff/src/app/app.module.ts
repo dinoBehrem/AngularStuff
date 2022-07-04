@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -13,6 +13,7 @@ import { EventDirectiveDirective } from './features/directives/atribute-directiv
 import { ValuesDirectiveDirective } from './features/directives/atribute-directive/values-directive.directive';
 import { PipeComponent } from './features/pipes/pipe/pipe.component';
 import { CustomPipePipe } from './features/pipes/custom-pipe.pipe';
+import { ReactiveFormsComponent } from './features/forms/reactive-forms/reactive-forms.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,12 +24,14 @@ import { CustomPipePipe } from './features/pipes/custom-pipe.pipe';
     EventDirectiveDirective,
     ValuesDirectiveDirective,
     PipeComponent,
-    CustomPipePipe
+    CustomPipePipe,
+    ReactiveFormsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ModuleAModule
+    ModuleAModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

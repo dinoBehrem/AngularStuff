@@ -1,0 +1,45 @@
+<h1>To use reactive forms import Reactive forms module in app.module</h1>
+<form class="form" [formGroup]="user" (ngSubmit)="printValues()">
+    <div class="form-group">
+        <label form="name">Name</label>
+        <input type="text" id="name" formControlName="name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label form="surname">Surname</label>
+        <input type="text" id="surname" formControlName="surname" class="form-control">
+    </div>
+    <div class="form-group">
+        <label form="age">Age</label>
+        <input type="number" id="age" formControlName="age" class="form-control">
+    </div>
+    <div class="form-group">
+        <label form="isActive">Active</label>
+        <input type="checkbox" id="isActive" formControlName="isActive" class="form-control">
+    </div>
+    <div class="form-group" formGroupName="job">
+        <div class="form-group">
+            <label form="title">Title</label>
+            <input type="text" id="title" formControlName="title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label form="description">Description</label>
+            <input type="text" id="description" formControlName="description" class="form-control">
+        </div>
+    </div>
+    <table class="table table-bordered" formArrayName="tasks">
+        <tr>
+            <th colspan="2">Add Multiple tasks:</th>
+            <th width="150px"><button type="button" class="btn btn-primary" (click)="addTask()">Add More</button></th>
+          </tr>
+          <tr *ngFor="let task of getTasks().controls; let i=index" [formGroupName]="i">
+              <td>{{task.value.name}} <input type="text" formControlName="name"></td>
+              <td>{{task.value.status}} <input type="checkbox" formControlName="status"></td>
+          </tr>
+    </table>
+    <button type="submit">Submit</button>
+</form>
+
+<p>{{user.get("name")?.value}}</p>
+<p>{{user.get("surname")?.value}}</p>
+<p>{{user.get("age")?.value}}</p>
+<p>{{user.get("isActive")?.value}}</p>
