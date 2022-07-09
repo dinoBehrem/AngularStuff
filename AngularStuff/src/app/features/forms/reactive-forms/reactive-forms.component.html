@@ -15,6 +15,8 @@
       >
         Age can not be less then one.
       </span> 
+      <!-- Accessing custom form validator -->
+      <span *ngIf="user.get('age')?.errors?.['ageValid']">Invalid age</span>
     </div>
     <div class="form-group">
         <label form="isActive">Active</label>
@@ -40,5 +42,7 @@
               <td>{{task.value.status}} <input type="checkbox" formControlName="status"></td>
           </tr>
     </table>
+    <span *ngIf="user.errors?.['patternMatch']">Can have the same first name and last name</span>
+    <span *ngIf="getTasks().errors?.['isEmpty']">Must have task</span>
     <button type="submit" [disabled]="user.invalid">Submit</button>
 </form>
