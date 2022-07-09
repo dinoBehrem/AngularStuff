@@ -11,6 +11,10 @@
     <div class="form-group">
         <label form="age">Age</label>
         <input type="number" id="age" formControlName="age" class="form-control">
+        <span *ngIf="(user.get('age')?.touched || user.get('age')?.dirty) && user.get('age')?.invalid"
+      >
+        Age can not be less then one.
+      </span> 
     </div>
     <div class="form-group">
         <label form="isActive">Active</label>
@@ -36,10 +40,5 @@
               <td>{{task.value.status}} <input type="checkbox" formControlName="status"></td>
           </tr>
     </table>
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="user.invalid">Submit</button>
 </form>
-
-<p>{{user.get("name")?.value}}</p>
-<p>{{user.get("surname")?.value}}</p>
-<p>{{user.get("age")?.value}}</p>
-<p>{{user.get("isActive")?.value}}</p>

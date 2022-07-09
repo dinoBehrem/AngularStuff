@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { User, Job, Task } from './user';
+import { fcv_ValidateAge } from '../../formValidators/customFormaValidators';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -12,14 +13,14 @@ export class ReactiveFormsComponent implements OnInit {
   user : FormGroup = new FormGroup({
     name : new FormControl('Dino'),
     surname : new FormControl('Behrem'),
-    age : new FormControl(30),
+    age : new FormControl(30, [fcv_ValidateAge]),
     isActive : new FormControl(true),
     job: this.formBuilder.group({
       title: ["", [Validators.required, Validators.minLength(4)]],
       description: ["", [Validators.minLength(15)]]
     }),
-    tasks: this.formBuilder.array([])
-  });
+    tasks: this.formBuilder.array([], [Validators.required])
+  },);
 
   korisnik! : User;
   constructor(private formBuilder: FormBuilder) { }
@@ -29,6 +30,8 @@ export class ReactiveFormsComponent implements OnInit {
 
   printValues(){
     
+    console.log(this.user.get('age')?.errors);
+
     this.korisnik = this.user.value;
 
     this.korisnik.job = this.user.value.job as Job;
@@ -45,7 +48,7 @@ export class ReactiveFormsComponent implements OnInit {
 
   newTask() : FormGroup {
     return this.formBuilder.group({
-      name: "",
+      name: ["", [Validators.required]],
       status: false
     });
   }
